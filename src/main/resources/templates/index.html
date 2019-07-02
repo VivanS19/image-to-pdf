@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>imaging</title><!-- Subject to change -->
+</head>
+
+<body>
+    <h2>Crop Hints: Please submit a file</h2>
+    <form method="post" name="myForm" enctype="multipart/form-data" action="/cropHints">
+        <br><br>
+        <input type="file" name="fileName">
+        <input type="submit" value="upload">
+    </form>
+    <h2>Image Annotations: Please submit a file</h2>
+    <form method="post" name="myForm" enctype="multipart/form-data" action="/imageAnnotations">
+        <br><br>
+        <input type="file" name="fileName">
+        <input type="submit" value="upload">
+    </form>
+    <h2>Image Labels: Please submit a file</h2>
+    <form method="post" name="myForm" enctype="multipart/form-data" action="/imageLabels">
+        <br><br>
+        <input type="file" name="fileName">
+        <input type="submit" value="upload">
+    </form>
+    <h2>Image Text: Please submit a file</h2>
+    <form method="post" name="myForm" enctype="multipart/form-data" action="/imageText">
+        <br><br>
+        <input type="file" name="fileName">
+        <input type="submit" value="upload">
+    </form>
+</body>
+
+</html>
