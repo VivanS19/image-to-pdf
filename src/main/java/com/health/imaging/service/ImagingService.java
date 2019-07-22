@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ImagingService {
-    public static final String PATH = "photos";
+    public static final String PATH = "src/photos";
 
     public String transformImage(byte[] imageBytes) {
         String imageTransformed = "image transformed";

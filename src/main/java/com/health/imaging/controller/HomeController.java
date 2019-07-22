@@ -5,7 +5,9 @@
 
 package com.health.imaging.controller;
 import com.google.cloud.vision.v1.AnnotateImageResponse;
+import com.google.cloud.vision.v1.BoundingPoly;
 import com.google.cloud.vision.v1.CropHintsAnnotation;
+import com.google.cloud.vision.v1.Vertex;
 import com.google.protobuf.ByteString;
 import com.health.imaging.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,14 +45,21 @@ public class HomeController {
         model.addAttribute("filePath", path);
         return returnValue;
     }
-    @PostMapping("/cropHints")
+    @PostMapping("/cropOperation")
     public String getCropHints(@RequestParam("fileName") MultipartFile imageFile, Model model) throws Exception {
-        String returnValue = "showCropHints";
+        String returnValue = "showCropOperation";
         ByteString bytes = ByteString.copyFrom(imageFile.getBytes());
-        CropHintsAnnotation annotation = cropHints.cropHints(bytes);
-        model.addAttribute("cropHints", annotation);
+        System.out.println(imageFile.getOriginalFilename());
+        System.out.println(imageFile.getContentType());
+        String croppedName = cropHints.cropImage(bytes, imageFile.getOriginalFilename());
+        String boundaryName = cropHints.drawBoundary(bytes, imageFile.getOriginalFilename());
+        System.out.println(croppedName);
+        model.addAttribute("croppedImage", croppedName);
+        System.out.println(boundaryName);
+        model.addAttribute("boundaryImage", boundaryName);
         return returnValue;
     }
+
     @PostMapping("/imageLabels")
     public String getImageLabels(@RequestParam("fileName") MultipartFile imageFile, Model model) throws Exception {
         String returnValue = "showLabels";
